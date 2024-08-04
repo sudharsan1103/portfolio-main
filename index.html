@@ -23,6 +23,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js">
+
+  </script>
+  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("B0kWTUTO7AhuwPu5V");
+    })();
+  </script>
 </head>
 
 <body>
@@ -1161,12 +1170,12 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+          <form action="#" class="form" id="contact-form" data-form>
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="user_name" class="form-input" placeholder="Full name" required data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="email" name="user_email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
 
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
@@ -1211,6 +1220,19 @@
   <!--
     - custom js link
   -->
+  <script type="text/javascript">
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // These IDs from the previous steps
+      emailjs.sendForm('service_gcgmi2i', 'template_alw1uir', this)
+        .then(function() {
+          alert('Email sent successfully!');
+        }, function(error) {
+          alert('Failed to send email. Error: ' + JSON.stringify(error));
+        });
+    });
+  </script>
   <script src="./assets/js/script.js"></script>
 
   <!--
